@@ -1,0 +1,16 @@
+<% include('layout') %>
+<h1>Find Matches</h1>
+<% if(matches.length > 0) { %>
+    <ul class="list-group">
+        <% matches.forEach(function(match) { %>
+            <li class="list-group-item">
+                <%= match.title %> by <%= match.author %>
+                <form action="/books/exchange/<%= match._id %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-primary btn-sm">Exchange</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No matches found based on your preferences.</p>
+<% } %>

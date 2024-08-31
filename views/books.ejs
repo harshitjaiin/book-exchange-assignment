@@ -1,0 +1,16 @@
+<% include('layout') %>
+<h1>Discover Books</h1>
+<% if(books.length > 0) { %>
+    <ul class="list-group">
+        <% books.forEach(function(book) { %>
+            <li class="list-group-item">
+                <%= book.title %> by <%= book.author %>
+                <form action="/books/request/<%= book._id %>" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-success btn-sm">Request Exchange</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No books available for exchange at the moment.</p>
+<% } %>
